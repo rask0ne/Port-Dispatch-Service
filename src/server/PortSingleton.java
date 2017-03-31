@@ -22,7 +22,7 @@ public class PortSingleton {
 	}
  
 	// Lazy Initialization (If required then only)
-	public static PortSingleton getInstance() {
+	synchronized public static PortSingleton getInstance() {
 		if (instance == null) {
 			// Thread Safe. Might be costly operation in some case
 			synchronized (PortSingleton.class) {
@@ -35,7 +35,7 @@ public class PortSingleton {
 		return instance;
 	}
 	
-	public int getFreePort(){
+	synchronized public int getFreePort(){
 		
 		for(int i = 0; i < this.port.size(); i++){
 			
@@ -48,13 +48,13 @@ public class PortSingleton {
 		
 	}
 	
-	public void attachToPort(Ship ship, int port){
+	synchronized public void attachToPort(Ship ship, int port){
 		
 		this.port.get(port).attachShip(ship);
 		
 	}
 	
-	public void removeFromPort(Ship ship, int port){
+	synchronized public void removeFromPort(Ship ship, int port){
 		
 		this.port.get(port).removeShip(ship);
 		

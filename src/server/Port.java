@@ -2,7 +2,10 @@ package server;
 
 import java.util.ArrayList;
 
+import org.eclipse.swt.widgets.Display;
+
 import client.Ship;
+import swt.body.TableWindow;
 
 public class Port {
 
@@ -106,10 +109,12 @@ public class Port {
 	synchronized void attachShip(Ship ship){
 		
 		this.ship.add(ship);
+		messageToTable(ship, "Is Mooring To Port");
 		System.out.print("Ship # " + ship.getShipNumber() + " is moored to port " + this.portNumber + "\n");
 		ship.setIsMoored(true);
 			
 	}
+	
 	
 	synchronized void removeShip(Ship ship){
 		
@@ -117,6 +122,17 @@ public class Port {
 		System.out.print("Ship # " + ship.getShipNumber() + " is removed from port " + this.portNumber + "\n");
 		ship.setIsMoored(false);
 			
+	}
+	
+	void messageToTable(Ship ship, String str){
+		
+		Display.getDefault().syncExec(new Runnable() {
+			   public void run() {
+				   	
+				   TableWindow.ShipAction(ship, str);
+		
+			   }
+		});
 	}
 	
 }

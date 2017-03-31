@@ -20,6 +20,8 @@ public class mainWindow {
 		
 		ShipNumber number = new ShipNumber();
 		
+		TableWindow table = new TableWindow();
+		
 	    Display display = new Display();
 	    Shell shell = new Shell(display);
 	    shell.setSize(300, 300);
@@ -116,8 +118,10 @@ public class mainWindow {
 		      }
 		    });
 
-	    
-	    
+	   
+	   Shell cs1 = new Shell(shell);
+	   
+	   table.TableShell(cs1);
 
 	    
 	    shell.open();
