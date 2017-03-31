@@ -60,4 +60,23 @@ public class PortSingleton {
 		
 	}
 	
+	public int getAmountOfPorts(){
+		
+		return this.port.size();
+		
+	}
+	
+	public String getPortsInfo(){
+		
+		String info = "";
+		for(int i = 0; i < this.port.size(); i++){
+			
+			info += this.port.get(i).getPortInfo();
+			
+			}
+			
+		return info;
+		
+	}
+	
 }

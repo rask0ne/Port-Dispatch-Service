@@ -1,4 +1,6 @@
 package swt.body;
+import java.io.IOException;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -13,11 +15,13 @@ import org.eclipse.swt.widgets.Text;
 import client.Ship;
 import client.ShipNumber;
 import client.ShipProperties;
+import server.FileDispatcher;
 
 public class mainWindow {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
+		(new Thread(new FileDispatcher())).start();
 		ShipNumber number = new ShipNumber();
 		
 		TableWindow table = new TableWindow();
@@ -44,11 +48,19 @@ public class mainWindow {
 	    
 	    final Text text = new Text(shell, SWT.SHADOW_IN);
 	    
-	    String items[] = { "5 sec", "10 sec", "15 sec", "20 sec" };
+	    String items[] = { "0 sec", "5 sec", "10 sec", "15 sec", "20 sec" };
 	    String load[] = { "to Unload", "to Upload", "Just Stay" };
 	    c1.setItems(items);
 	    c1.addSelectionListener(new SelectionAdapter() {
 	      public void widgetSelected(SelectionEvent e) {
+	    	  
+	    	if (c1.getText().equals("0 sec")) {
+	  	        
+		        	
+		        	ShipProperties.getInstance().setSleepTime(0);
+		        	text.setText("");
+		        	
+		    }
 	        if (c1.getText().equals("5 sec")) {
 	        
 	        	
@@ -65,7 +77,7 @@ public class mainWindow {
 	        	ShipProperties.getInstance().setSleepTime(15);
 		        text.setText("");
 		        
-	        }else {
+	        }else if (c1.getText().equals("20 sec")){
 	        	
 	        	ShipProperties.getInstance().setSleepTime(20);
 	        	text.setText("");
@@ -77,19 +89,19 @@ public class mainWindow {
 	    c2.setItems(load);
 	    c2.addSelectionListener(new SelectionAdapter() {
 		      public void widgetSelected(SelectionEvent e) {
-		        if (c1.getText().equals("to Unload")) {
+		        if (c2.getText().equals("to Unload")) {
 		        
 		        	ShipProperties.getInstance().setUnload(true);
 		        	ShipProperties.getInstance().setUpload(false);
 		        	text.setText("");
 		        	
-		        } else if (c1.getText().equals("to Upload")) {
+		        } else if (c2.getText().equals("to Upload")) {
 		          
 		        	ShipProperties.getInstance().setUnload(false);
 		        	ShipProperties.getInstance().setUpload(true);
 		        	text.setText("");
 		        	
-		        }else {
+		        }else if(c2.getText().equals("Just Stay")){
 		        	
 		        	ShipProperties.getInstance().setUnload(false);
 		        	ShipProperties.getInstance().setUpload(false);
@@ -130,6 +142,7 @@ public class mainWindow {
 	        display.sleep();
 	    }
 	    display.dispose();
+	    System.exit(0);
 	  }
 	
 }

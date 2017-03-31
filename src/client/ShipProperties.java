@@ -7,8 +7,8 @@ public class ShipProperties {
 	private static ShipProperties instance = null;
 	private int shipNumber = 0;
 	private int sleepTime;
-	boolean toUpload;
-	boolean toUnload;
+	private boolean toUpload;
+	private boolean toUnload;
 	
 	public static ShipProperties getInstance() {
 		if (instance == null) {

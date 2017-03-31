@@ -110,7 +110,6 @@ public class Port {
 		
 		this.ship.add(ship);
 		messageToTable(ship, "Is Mooring To Port");
-		System.out.print("Ship # " + ship.getShipNumber() + " is moored to port " + this.portNumber + "\n");
 		ship.setIsMoored(true);
 			
 	}
@@ -119,7 +118,6 @@ public class Port {
 	synchronized void removeShip(Ship ship){
 		
 		this.ship.remove(ship);
-		System.out.print("Ship # " + ship.getShipNumber() + " is removed from port " + this.portNumber + "\n");
 		ship.setIsMoored(false);
 			
 	}
@@ -133,6 +131,14 @@ public class Port {
 		
 			   }
 		});
+	}
+	
+	public String getPortInfo(){
+		
+		String info = ( "Port #" + String.valueOf(this.getPortNumber()) + ", Free Piers: " + 
+				String.valueOf(this.shipsLimit - this.ship.size()) + "                                                                     " );
+		return info;
+		
 	}
 	
 }

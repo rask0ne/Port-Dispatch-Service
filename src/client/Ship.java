@@ -21,8 +21,8 @@ public class Ship implements Runnable{
 	private int portNumber;
 	private int shipNumber;
     private boolean isFull;
-    private boolean toUnloadCargo;
-    private boolean toGetCargo;
+    private boolean toUnloadCargo = true;
+    private boolean toGetCargo = true;
     private boolean isMoored = false;
     private int sleepTime;
     
@@ -94,7 +94,6 @@ public class Ship implements Runnable{
 			}
 			else{
 				
-				System.out.print("Ship # " + this.shipNumber + " is waiting\n");
 				return;	
 			}
 		} catch (InterruptedException e) {
@@ -132,13 +131,13 @@ public class Ship implements Runnable{
 	
 	public void shipActions(){
 		
-		if(this.toGetCargo){
+		if(this.toGetCargo == true){
 			
 			getCargo();
 			
 		}
 		
-		if(this.toUnloadCargo){
+		if(this.toUnloadCargo == true){
 			
 			unloadCargo();
 			
@@ -154,7 +153,6 @@ public class Ship implements Runnable{
 		removeFromTable(this);
 		this.isMoored = true;
 		Thread.interrupted();
-		System.out.print("Ship # " + this.shipNumber + " is done\n");
 		
 				
 	}
@@ -190,7 +188,11 @@ public class Ship implements Runnable{
 		
 		try {
 			messageToTable(this, "Staying In Port");
+			long timeout= System.currentTimeMillis();
 			Thread.sleep(this.sleepTime * 1000);
+			timeout = System.currentTimeMillis() - timeout;
+			if(timeout > sleepTime * 1000)
+				System.out.println("Time-out Ship #" + String.valueOf(this.getShipNumber()));
 			this.sleepTime = 0;
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
