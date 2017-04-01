@@ -2,6 +2,8 @@ package server;
 
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.swt.widgets.Display;
 
 import client.Ship;
@@ -9,7 +11,8 @@ import swt.body.TableWindow;
 
 public class Port {
 
-	
+	private static final Logger log4j = LogManager.getLogger(Logger.class 
+	        .getName());
 	private ArrayList<Ship> ship= new ArrayList<Ship>();
 	private final int portNumber;
 	private boolean pierIsEmpty;
@@ -38,6 +41,7 @@ public class Port {
 		
 			if(this.ship.size() == this.shipsLimit)
 				this.pierIsEmpty = false;
+			log4j.debug("Ship #" + ship.getShipNumber() + " moored to port #" + this.getPortNumber()); 
 		}
 		
 	}
@@ -46,6 +50,7 @@ public class Port {
 		
 		this.ship.remove(ship);
 		this.pierIsEmpty = true;
+		log4j.debug("Ship #" + ship.getShipNumber() + " unmoored from port #" + this.getPortNumber()); 
 			
 	}
 	
@@ -111,6 +116,7 @@ public class Port {
 		this.ship.add(ship);
 		messageToTable(ship, "Is Mooring To Port");
 		ship.setIsMoored(true);
+		log4j.debug("Ship #" + ship.getShipNumber() + " moored to port #" + this.getPortNumber()); 
 			
 	}
 	
@@ -119,6 +125,7 @@ public class Port {
 		
 		this.ship.remove(ship);
 		ship.setIsMoored(false);
+		log4j.debug("Ship #" + ship.getShipNumber() + " unmoored from port #" + this.getPortNumber());
 			
 	}
 	

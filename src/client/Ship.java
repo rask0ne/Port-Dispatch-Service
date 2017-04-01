@@ -15,7 +15,13 @@ import server.PortSingleton;
 
 import swt.body.TableWindow;
 
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
+
 public class Ship implements Runnable{
+	
+	private static final Logger log4j = LogManager.getLogger(Logger.class 
+	        .getName());
 	
 	private boolean isNotified = false;
 	private int portNumber;
@@ -41,6 +47,8 @@ public class Ship implements Runnable{
 		this.priority = priority;
 		
 		addToTable(this);
+		
+		log4j.debug("Ship #" + this.getShipNumber() + " created"); 
 		
 	}
 	
@@ -126,6 +134,7 @@ public class Ship implements Runnable{
 		//this.isMoored = true;
 		PortSingleton.getInstance().attachToPort(this, port);
 		Thread.sleep(2000);
+		log4j.debug("Ship #" + this.getShipNumber() + " attached to port #" + this.getPortNumber()); 
 		shipActions();
 				
 	}
@@ -176,6 +185,7 @@ public class Ship implements Runnable{
 			messageToTable(this, "Getting Cargo");
 			Thread.sleep(10000);
 			this.toGetCargo = false;
+			log4j.debug("Ship #" + this.getShipNumber() + " got cargo"); 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -189,6 +199,7 @@ public class Ship implements Runnable{
 			messageToTable(this, "Unloading Of Cargo");
 			Thread.sleep(6500);
 			this.toUnloadCargo = false;
+			log4j.debug("Ship #" + this.getShipNumber() + " unloaded cargo"); 
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -199,6 +210,7 @@ public class Ship implements Runnable{
 	public void stayInPort(){
 		
 		try {
+			log4j.debug("Ship #" + this.getShipNumber() + " staying in port" + this.getPortNumber()); 
 			messageToTable(this, "Staying In Port");
 			long timeout= System.currentTimeMillis();
 			Thread.sleep(this.sleepTime * 1000);
@@ -218,6 +230,7 @@ public class Ship implements Runnable{
 		messageToTable(this, "Unmooring From Port");
 		Thread.sleep(3000);
 		PortSingleton.getInstance().removeFromPort(this, this.portNumber - 1);
+		log4j.debug("Ship #" + this.getShipNumber() + " unmoored"); 
 			
 	}
 	
