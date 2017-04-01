@@ -17,7 +17,7 @@ import swt.body.TableWindow;
 
 public class Ship implements Runnable{
 	
-	
+	private boolean isNotified = false;
 	private int portNumber;
 	private int shipNumber;
     private boolean isFull;
@@ -25,16 +25,22 @@ public class Ship implements Runnable{
     private boolean toGetCargo = true;
     private boolean isMoored = false;
     private int sleepTime;
+    private int priority;
     
     
-	public Ship(int ship, int time, boolean toUn, boolean toGet){
+	public Ship(int ship, int time, boolean toUn, boolean toGet, int priority){
+		
+		Thread t = new Thread(this);
+		t.setPriority(priority);
+		Thread.currentThread().setPriority(priority);
 		
 		this.shipNumber = ship;
 		this.toUnloadCargo = toUn;
 		this.toGetCargo = toGet;
 		this.sleepTime = time;
+		this.priority = priority;
 		
-		TableWindow.addNewShip(this);
+		addToTable(this);
 		
 	}
 	
@@ -81,15 +87,15 @@ public class Ship implements Runnable{
 		
 	}
 	
-	void findThePort(){
+	synchronized void findThePort(){
 		
 		try {
 			int portNumber = PortSingleton.getInstance().getFreePort() - 1;
 			if(portNumber != 9998){
 				
 				this.portNumber = portNumber + 1;
-				attachToPort(portNumber);
 				
+				attachToPort(portNumber);
 				
 			}
 			else{
@@ -105,7 +111,7 @@ public class Ship implements Runnable{
 	@Override
 	
 	public void run() {
-		
+
 		while(!this.isMoored){
 			
 			findThePort();
@@ -115,6 +121,7 @@ public class Ship implements Runnable{
 	}
 	
 	void attachToPort(int port) throws InterruptedException{
+
 		
 		//this.isMoored = true;
 		PortSingleton.getInstance().attachToPort(this, port);
@@ -129,7 +136,7 @@ public class Ship implements Runnable{
 		
 	}
 	
-	public void shipActions(){
+	public void shipActions() throws InterruptedException{
 		
 		if(this.toGetCargo == true){
 			
@@ -157,6 +164,11 @@ public class Ship implements Runnable{
 				
 	}
 	
+	public int getPriority(){
+		
+		return this.priority;
+		
+	}
 	
 	public void getCargo(){
 		
@@ -201,22 +213,29 @@ public class Ship implements Runnable{
 		
 	}
 	
-	public void unmoorFromPort(){
+	public void unmoorFromPort() throws InterruptedException{
 		
-		try {
-			messageToTable(this, "Unmooring From Port");
-			Thread.sleep(3000);
-			PortSingleton.getInstance().removeFromPort(this, this.portNumber - 1);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		messageToTable(this, "Unmooring From Port");
+		Thread.sleep(3000);
+		PortSingleton.getInstance().removeFromPort(this, this.portNumber - 1);
 			
 	}
 	
 	public int getPortNumber(){
 		
 		return this.portNumber;
+		
+	}
+	
+	void addToTable(Ship ship){
+		
+		Display.getDefault().syncExec(new Runnable() {
+			   public void run() {
+				   	
+				   TableWindow.addNewShip(ship);
+		
+			   }
+		});
 		
 	}
 	

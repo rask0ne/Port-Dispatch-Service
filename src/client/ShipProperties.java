@@ -9,6 +9,7 @@ public class ShipProperties {
 	private int sleepTime;
 	private boolean toUpload;
 	private boolean toUnload;
+	private int priority;
 	
 	public static ShipProperties getInstance() {
 		if (instance == null) {
@@ -71,6 +72,18 @@ public class ShipProperties {
 			
 		return this.shipNumber;
 			
+	}
+	
+	public int getPriority(){
+		
+		return this.priority;
+		
+	}
+	
+	public void setPriority(int priority){
+		
+		this.priority = priority;
+		
 	}
 
 }

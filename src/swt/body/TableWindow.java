@@ -22,7 +22,7 @@ public class TableWindow {
 		//this.d = d;
 	    this.s = s;
 
-	    s.setSize(390, 500);
+	    s.setSize(610, 500);
 	    
 	    s.setText("A Table Shell Example");
 	    s.setLayout(new FillLayout());
@@ -32,12 +32,15 @@ public class TableWindow {
 	    TableColumn tc1 = new TableColumn(t, SWT.CENTER);
 	    TableColumn tc2 = new TableColumn(t, SWT.CENTER);
 	    TableColumn tc3 = new TableColumn(t, SWT.CENTER);
+	    TableColumn tc4 = new TableColumn(t, SWT.CENTER);
 	    tc1.setText("Ship Number");
 	    tc2.setText("Action");
 	    tc3.setText("Port Number");
+	    tc4.setText("Cargo Priority");
 	    tc1.setWidth(100);
 	    tc2.setWidth(180);
 	    tc3.setWidth(100);
+	    tc4.setWidth(220);
 	    t.setHeaderVisible(true);
 
 
@@ -55,8 +58,15 @@ public class TableWindow {
 		  
 		  String num = String.valueOf(ship.getShipNumber());
 		  String action = "Searching Port";
+		  String priority = null;
+		  if(ship.getPriority() == Thread.MIN_PRIORITY)
+			  priority = "Low Priority";
+		  else if(ship.getPriority() == Thread.NORM_PRIORITY)
+			  priority = "Middle Priority";
+		  else if(ship.getPriority() == Thread.MAX_PRIORITY)
+			  priority = "High Priority";
 		  
-		  item.setText(new String[] { num, action, ""});
+		  item.setText(new String[] { num, action, "", priority});
 		  
 	  }
 	  

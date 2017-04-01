@@ -43,6 +43,9 @@ public class mainWindow {
 	    c2.setBounds(50, 85, 150, 65);
 	    c2.setEnabled(true);
 	    
+	    final Combo c3 = new Combo(shell, SWT.READ_ONLY);
+	    c3.setBounds(50, 85, 150, 65);
+	    
 	    final Button button = new Button(shell, SWT.PUSH);
 	    button.setText("Create Ship");
 	    
@@ -50,6 +53,7 @@ public class mainWindow {
 	    
 	    String items[] = { "0 sec", "5 sec", "10 sec", "15 sec", "20 sec" };
 	    String load[] = { "to Unload", "to Upload", "Just Stay" };
+	    String priority[] = { "Low Priority", "Middle Priority", "High Priority" };
 	    c1.setItems(items);
 	    c1.addSelectionListener(new SelectionAdapter() {
 	      public void widgetSelected(SelectionEvent e) {
@@ -111,12 +115,35 @@ public class mainWindow {
 		      }
 		    });
 	    
+	    c3.setItems(priority);
+	    c3.addSelectionListener(new SelectionAdapter() {
+		      public void widgetSelected(SelectionEvent e) {
+		        if (c3.getText().equals("Low Priority")) {
+		        
+		        	ShipProperties.getInstance().setPriority(Thread.MIN_PRIORITY);
+		        	text.setText("");
+		        	
+		        }else if (c3.getText().equals("Middle Priority")) {
+		          
+		        	ShipProperties.getInstance().setPriority(Thread.NORM_PRIORITY);
+		        	text.setText("");
+		        	
+		        }else if(c3.getText().equals("High Priority")){
+		        	
+		        	ShipProperties.getInstance().setPriority(Thread.MAX_PRIORITY);
+		        	text.setText("");
+		        	
+		        }
+		      }
+		    });
+	    
 	    button.addSelectionListener(new SelectionListener() {
 
 	    	
 		      public void widgetSelected(SelectionEvent event) {
 		    	(new Thread(new Ship(number.getNumber(), ShipProperties.getInstance().getSleepTime(), ShipProperties.getInstance().getUnload()
-		    			,ShipProperties.getInstance().getUpload()))).start();
+		    			,ShipProperties.getInstance().getUpload(), ShipProperties.getInstance().getPriority()))).start();
+		    	
 		        text.setText("Ship Created!");
 		        number.setNumber();
 		      }
@@ -124,7 +151,8 @@ public class mainWindow {
 		      public void widgetDefaultSelected(SelectionEvent event) {
 		    	  
 		    	  (new Thread(new Ship(number.getNumber(), ShipProperties.getInstance().getSleepTime(), ShipProperties.getInstance().getUnload()
-			    			,ShipProperties.getInstance().getUpload()))).start();
+			    			,ShipProperties.getInstance().getUpload(), ShipProperties.getInstance().getPriority()))).start();
+
 		        text.setText("Ship Created!");
 		        number.setNumber();
 		      }

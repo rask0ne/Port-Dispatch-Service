@@ -1,0 +1,24 @@
+================= 5 sec =================
+
+Port #1, Free Piers: 0                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 10 sec =================
+
+Port #1, Free Piers: 0                                                                     Port #2, Free Piers: 0                                                                     Port #3, Free Piers: 0                                                                     Port #4, Free Piers: 0                                                                     Port #5, Free Piers: 0                                                                     
+
+================= 15 sec =================
+
+Port #1, Free Piers: 0                                                                     Port #2, Free Piers: 0                                                                     Port #3, Free Piers: 0                                                                     Port #4, Free Piers: 0                                                                     Port #5, Free Piers: 0                                                                     
+
+================= 20 sec =================
+
+Port #1, Free Piers: 0                                                                     Port #2, Free Piers: 0                                                                     Port #3, Free Piers: 0                                                                     Port #4, Free Piers: 0                                                                     Port #5, Free Piers: 0                                                                     
+
+================= 25 sec =================
+
+Port #1, Free Piers: -1                                                                     Port #2, Free Piers: 0                                                                     Port #3, Free Piers: 0                                                                     Port #4, Free Piers: 0                                                                     Port #5, Free Piers: 0                                                                     
+
+================= 30 sec =================
+
+Port #1, Free Piers: -1                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
