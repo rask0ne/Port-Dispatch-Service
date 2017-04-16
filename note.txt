@@ -1,28 +1,88 @@
-================= 5 sec =================
-
-Port #1, Free Piers: 1                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
-
-================= 10 sec =================
-
-Port #1, Free Piers: 0                                                                     Port #2, Free Piers: 0                                                                     Port #3, Free Piers: 3                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
-
-================= 15 sec =================
-
-Port #1, Free Piers: 0                                                                     Port #2, Free Piers: 0                                                                     Port #3, Free Piers: 3                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
-
-================= 20 sec =================
-
-Port #1, Free Piers: 0                                                                     Port #2, Free Piers: 0                                                                     Port #3, Free Piers: 3                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
-
-================= 25 sec =================
-
-Port #1, Free Piers: 0                                                                     Port #2, Free Piers: 0                                                                     Port #3, Free Piers: 3                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
-
-================= 30 sec =================
+================= 110 sec =================
 
 Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
 
-================= 35 sec =================
+================= 115 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 120 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 125 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 130 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 135 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 140 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 145 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 150 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 155 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 160 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 165 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 170 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 175 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 180 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 185 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 190 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 195 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 200 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 205 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 210 sec =================
+
+Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
+
+================= 215 sec =================
 
 Port #1, Free Piers: 2                                                                     Port #2, Free Piers: 3                                                                     Port #3, Free Piers: 4                                                                     Port #4, Free Piers: 3                                                                     Port #5, Free Piers: 2                                                                     
 

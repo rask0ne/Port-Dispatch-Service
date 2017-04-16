@@ -9,6 +9,11 @@ import org.eclipse.swt.widgets.Display;
 import client.Ship;
 import swt.body.TableWindow;
 
+/**
+ * Model of one port
+ * @author rask
+ *
+ */
 public class Port {
 
 	private static final Logger log4j = LogManager.getLogger(Logger.class 
@@ -20,6 +25,11 @@ public class Port {
 	private int shipNumber = ship.size();
 	private final int shipsLimit;	
 	
+	/**
+	 * Constructor
+	 * @param port - number of port
+	 * @param limit - limit of ships
+	 */
 	Port(int port, int limit){
 		
 		this.portNumber = port;
@@ -29,6 +39,10 @@ public class Port {
 		
 	}
 	
+	/**
+	 * Only one ship may moor to this port at one period of time
+	 * @param ship - ship which moores to port
+	 */
 	synchronized void gotMoored(Ship ship){
 		
 		if(this.ship.size() >= this.shipsLimit)
@@ -45,7 +59,10 @@ public class Port {
 		}
 		
 	}
-	
+	/**
+	 * Unmooring ship from this port
+	 * @param ship - ship to unmoor
+	 */
 	synchronized void gotUnmoored(Ship ship){
 		
 		this.ship.remove(ship);
@@ -54,63 +71,40 @@ public class Port {
 			
 	}
 	
-	synchronized void gotUnload(Ship ship){
-		
-		if(ship.getIsFull() == true){
-			
-			if(this.stock < 3){
-				
-				ship.setIsFull(false);
-				this.stock += 1;
-			}
-			else return;
-		}
-		
-	}
-	
-	synchronized void gotUpload(Ship ship){
-		
-		if(this.pierIsEmpty == false && ship.getIsFull() == false){
-			
-			if(this.stock != 0){
-				
-				ship.setIsFull(true);
-				this.stock -= 1;
-			}
-		}
-		
-	}
-	
+	/**
+	 * Getting port number
+	 * @return port number
+	 */
 	public int getPortNumber(){
 		
 		return this.portNumber;
 		
 	}
 	
+	/**
+	 * Getting if some pier is empty
+	 * @return
+	 */
 	public boolean getPierIsEmpty(){
 		
 		return this.pierIsEmpty;
 		
 	}
 	
-	public int getStock(){
-		
-		return this.stock;
-		
-	}
-	
-	void setStock(int stock){
-		
-		this.stock = stock;
-		
-	}
-	
+	/**
+	 * Getting free places in port
+	 * @return how much free places
+	 */
 	synchronized public int getFreePlaces(){
 		
 		return (this.shipsLimit - this.ship.size());
 		
 	}
 	
+	/**
+	 * Attaching ship to port
+	 * @param ship
+	 */
 	synchronized void attachShip(Ship ship){
 		
 		this.ship.add(ship);
@@ -120,7 +114,10 @@ public class Port {
 			
 	}
 	
-	
+	/**
+	 * Removing ship from port
+	 * @param ship
+	 */
 	synchronized void removeShip(Ship ship){
 		
 		this.ship.remove(ship);
@@ -129,6 +126,11 @@ public class Port {
 			
 	}
 	
+	/**
+	 * Adding message to table
+	 * @param ship
+	 * @param str message
+	 */
 	void messageToTable(Ship ship, String str){
 		
 		Display.getDefault().syncExec(new Runnable() {
@@ -140,6 +142,10 @@ public class Port {
 		});
 	}
 	
+	/**
+	 * Getting port info for FileDispatcher
+	 * @return
+	 */
 	public String getPortInfo(){
 		
 		String info = ( "Port #" + String.valueOf(this.getPortNumber()) + ", Free Piers: " + 

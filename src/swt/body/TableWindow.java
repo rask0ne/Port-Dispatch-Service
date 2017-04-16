@@ -10,6 +10,11 @@ import org.eclipse.swt.widgets.TableItem;
 
 import client.Ship;
 
+/**
+ * SWT GUI class. Table of state of ships
+ * @author rask
+ *
+ */
 public class TableWindow {
 	
 	// Display d;
@@ -52,6 +57,10 @@ public class TableWindow {
 	    d.dispose();*/
 	  }
 	  
+	  /**
+	   * Adding new ship to table
+	   * @param ship
+	   */
 	  public static void addNewShip(Ship ship){
 		  
 		  TableItem item = new TableItem(t, SWT.NONE);
@@ -70,6 +79,11 @@ public class TableWindow {
 		  
 	  }
 	  
+	  /**
+	   * Setting ship action to table
+	   * @param ship
+	   * @param update message
+	   */
 	  public static void ShipAction(Ship ship, String update){
 		  
 		  String num = String.valueOf(ship.getShipNumber());
@@ -93,6 +107,10 @@ public class TableWindow {
 		
 	  }
 	  
+	  /**
+	   * Remove ship from table
+	   * @param ship
+	   */
 	  public static void removeShip(Ship ship){
 		  	
 		  String num = String.valueOf(ship.getShipNumber());

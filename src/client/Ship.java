@@ -18,6 +18,11 @@ import swt.body.TableWindow;
 import org.apache.logging.log4j.Logger; 
 import org.apache.logging.log4j.LogManager;
 
+/**
+ * Ship model
+ * @author rask
+ *
+ */
 public class Ship implements Runnable{
 	
 	private static final Logger log4j = LogManager.getLogger(Logger.class 
@@ -33,7 +38,14 @@ public class Ship implements Runnable{
     private int sleepTime;
     private int priority;
     
-    
+    /**
+     * Class constructor. Runs ship thread and sets its priority
+     * @param ship number of ship
+     * @param time which ship will stay in port
+     * @param toUn if ship will unload cargo
+     * @param toGet if ship will upload cargo
+     * @param priority of ship
+     */
 	public Ship(int ship, int time, boolean toUn, boolean toGet, int priority){
 		
 		Thread t = new Thread(this);
@@ -52,49 +64,79 @@ public class Ship implements Runnable{
 		
 	}
 	
+	/**
+	 * Sets time ship will stay in port
+	 * @param time of moor
+	 */
 	public void setSleepTime(int time){
 		
 		this.sleepTime = time;
 		
 	}
 	
+	/**
+	 * Setting if ship will unload cargo
+	 * @param cargo true/false
+	 */
 	public void setUnload(boolean cargo){
 		
 		this.toUnloadCargo = cargo;
 		
 	}
 	
+	/**
+	 * Setting if ship will get cargo from port
+	 * @param cargo true/false
+	 */
 	public void setUpload(boolean cargo){
 	
 	this.toGetCargo = cargo;
 	
 	}
 	
-	
+	/**
+	 * Setting if ship if full of cargo
+	 * @param full true/false
+	 */
 	public void setIsFull(boolean full){
 		
 		this.isFull = full;
 		
 	}
 	
+	/**
+	 * Getting if ship is full of cargo
+	 * @return true/false
+	 */
 	public boolean getIsFull(){
 		
 		return this.isFull;
 		
 	}
 	
+	/**
+	 * Setting ship number
+	 * @param number of ship
+	 */
 	void setShipNumber(int number){
 		
 		this.shipNumber = number;
 		
 	}
 	
+	/**
+	 * Getting ship number
+	 * @return number
+	 */
 	public int getShipNumber(){
 		
 		return this.shipNumber;
 		
 	}
 	
+	/**
+	 * Synchronized method in which ship thread is searching for free port
+	 */
 	synchronized void findThePort(){
 		
 		try {
@@ -118,6 +160,9 @@ public class Ship implements Runnable{
 
 	@Override
 	
+	/**
+	 * Searching port while didn't find it
+	 */
 	public void run() {
 
 		while(!this.isMoored){
@@ -128,7 +173,12 @@ public class Ship implements Runnable{
 		
 	}
 	
-	void attachToPort(int port) throws InterruptedException{
+	/**
+	 * If ship found the port, it attaches to it and does actions
+	 * @param port number of port ship will attach
+	 * @throws InterruptedException
+	 */
+	synchronized void attachToPort(int port) throws InterruptedException{
 
 		
 		//this.isMoored = true;
@@ -139,12 +189,20 @@ public class Ship implements Runnable{
 				
 	}
 	
+	/**
+	 * Setting that ship is moored to port or not
+	 * @param or true/false
+	 */
 	public void setIsMoored(boolean or){
 		
 		this.isMoored = or;
 		
 	}
 	
+	/**
+	 * Ship performs its tasks according to properties
+	 * @throws InterruptedException
+	 */
 	public void shipActions() throws InterruptedException{
 		
 		if(this.toGetCargo == true){
@@ -173,12 +231,19 @@ public class Ship implements Runnable{
 				
 	}
 	
+	/**
+	 * Getting priority of ship
+	 * @return
+	 */
 	public int getPriority(){
 		
 		return this.priority;
 		
 	}
 	
+	/**
+	 * Method connected to GUI. Main idea is a process of getting cargo from port
+	 */
 	public void getCargo(){
 		
 		try {
@@ -192,7 +257,10 @@ public class Ship implements Runnable{
 		}
 		
 	}
-		
+	
+	/**
+	 * Method connected to GUI. Main idea is a process of unloading cargo to port
+	 */
 	public void unloadCargo(){
 		
 		try {
@@ -207,6 +275,9 @@ public class Ship implements Runnable{
 		
 	}
 	
+	/**
+	 * Method connected to GUI. Main idea is a process of staying in port
+	 */
 	public void stayInPort(){
 		
 		try {
@@ -225,6 +296,10 @@ public class Ship implements Runnable{
 		
 	}
 	
+	/**
+	 * Method connected to GUI. Main idea is unmooring from port
+	 * @throws InterruptedException
+	 */
 	public void unmoorFromPort() throws InterruptedException{
 		
 		messageToTable(this, "Unmooring From Port");
@@ -234,12 +309,20 @@ public class Ship implements Runnable{
 			
 	}
 	
+	/**
+	 * Getting port number ship connects
+	 * @return port number
+	 */
 	public int getPortNumber(){
 		
 		return this.portNumber;
 		
 	}
 	
+	/**
+	 * Gui method. Adding ship to table
+	 * @param ship
+	 */
 	void addToTable(Ship ship){
 		
 		Display.getDefault().syncExec(new Runnable() {
@@ -252,6 +335,11 @@ public class Ship implements Runnable{
 		
 	}
 	
+	/**
+	 * GUI method. Adding message to table of current state of ship
+	 * @param ship ship
+	 * @param str message
+	 */
 	void messageToTable(Ship ship, String str){
 		
 		Display.getDefault().syncExec(new Runnable() {
@@ -263,6 +351,10 @@ public class Ship implements Runnable{
 		});
 	}
 	
+	/**
+	 * GUI method. Removing ship from table
+	 * @param ship
+	 */
 	void removeFromTable(Ship ship){
 		
 		Display.getDefault().syncExec(new Runnable() {

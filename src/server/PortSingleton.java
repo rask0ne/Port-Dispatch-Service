@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 import client.Ship;
 
+/**
+ * Singleton class which contains list of ports in sea
+ * @author rask
+ *
+ */
 public class PortSingleton {
 
 	private static ArrayList<Port> port = new ArrayList<Port>();
@@ -11,6 +16,9 @@ public class PortSingleton {
 	
 	private static PortSingleton instance = null;
 	 
+	/**
+	 * Constructor of singleton
+	 */
 	private PortSingleton() {
 		
 		port.add(new Port(1, 2));
@@ -21,7 +29,10 @@ public class PortSingleton {
 		
 	}
  
-	// Lazy Initialization (If required then only)
+	/**
+	 * Instance of singleton
+	 * @return instance
+	 */
 	synchronized public static PortSingleton getInstance() {
 		if (instance == null) {
 			// Thread Safe. Might be costly operation in some case
@@ -35,6 +46,10 @@ public class PortSingleton {
 		return instance;
 	}
 	
+	/**
+	 * Getting free port from list of ports
+	 * @return free port number
+	 */
 	synchronized public int getFreePort(){
 		
 		for(int i = 0; i < this.port.size(); i++){
@@ -48,24 +63,42 @@ public class PortSingleton {
 		
 	}
 	
+	/**
+	 * Attaching ship to port with free places
+	 * @param ship
+	 * @param port number
+	 */
 	synchronized public void attachToPort(Ship ship, int port){
 		
 		this.port.get(port).attachShip(ship);
 		
 	}
 	
+	/**
+	 * Removing ship from port
+	 * @param ship
+	 * @param port number
+	 */
 	synchronized public void removeFromPort(Ship ship, int port){
 		
 		this.port.get(port).removeShip(ship);
 		
 	}
 	
+	/**
+	 * Getting amount of all ports in sea
+	 * @return number of ports
+	 */
 	public int getAmountOfPorts(){
 		
 		return this.port.size();
 		
 	}
 	
+	/**
+	 * Getting info about all ports at this time
+	 * @return string message
+	 */
 	public String getPortsInfo(){
 		
 		String info = "";

@@ -3,11 +3,20 @@ package server;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Class which gets current state of ports
+ * @author rask
+ *
+ */
 public class FileDispatcher implements Runnable{
 
 	//private FileWriter writer;
 	private int time = 0;
 	
+	/**
+	 * Constructor
+	 * @throws IOException
+	 */
 	public FileDispatcher() throws IOException{
 		
 		/*this.writer = new FileWriter("note.txt", true);
@@ -15,6 +24,9 @@ public class FileDispatcher implements Runnable{
 		
 	}
 	@Override
+	/**
+	 * Run method. Every 5 second writes state of ports in txt file
+	 */
 	public void run() {
 		
 		FileWriter writer;

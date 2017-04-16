@@ -17,6 +17,11 @@ import client.ShipNumber;
 import client.ShipProperties;
 import server.FileDispatcher;
 
+/**
+ * SWT GUI class. Window where user setting properties of ship
+ * @author rask
+ *
+ */
 public class mainWindow {
 	
 	public static void main(String[] args) throws IOException {
@@ -136,6 +141,7 @@ public class mainWindow {
 		        }
 		      }
 		    });
+	   
 	    
 	    button.addSelectionListener(new SelectionListener() {
 
